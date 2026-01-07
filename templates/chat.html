@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Invitation</title>
+    <title>CS Association Invitation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin: 0;
@@ -14,6 +15,7 @@
             align-items: center;
             justify-content: center;
         }
+
         .chat-box {
             width: 95%;
             max-width: 420px;
@@ -24,22 +26,25 @@
             flex-direction: column;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
+
         .header {
             background: #1f4fd8;
             color: white;
             padding: 15px;
             text-align: center;
-            font-weight: bold;
             border-radius: 12px 12px 0 0;
+            font-weight: bold;
         }
+
         .messages {
             flex: 1;
             padding: 15px;
             overflow-y: auto;
         }
+
         .msg {
-            background: white;
-            padding: 10px 14px;
+            background: #e0e7ff;
+            padding: 12px 14px;
             margin-bottom: 12px;
             border-radius: 12px;
             width: fit-content;
@@ -47,25 +52,25 @@
             font-size: 14px;
             animation: fadeIn 0.5s ease-in;
         }
-        .system {
-            background: #e0e7ff;
-        }
+
         .details {
             background: #d1fae5;
             font-weight: bold;
         }
+
         @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(5px);}
-            to {opacity: 1; transform: translateY(0);}
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+
         .btn {
             margin: 15px;
-            padding: 12px;
+            padding: 14px;
             background: #1f8f88;
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 16px;
             display: none;
             cursor: pointer;
         }
@@ -74,17 +79,20 @@
 <body>
 
 <div class="chat-box">
-    <div class="header">CS Association System</div>
+    <div class="header">
+        CS Association System
+    </div>
+
     <div class="messages" id="chat"></div>
+
     <button class="btn" id="acceptBtn">Accept Invitation</button>
 </div>
 
 <script>
     const chat = document.getElementById("chat");
     const btn = document.getElementById("acceptBtn");
-    const fullname = "{{ fullname }}";
 
-    function addMessage(text, className="system") {
+    function addMessage(text, className = "") {
         const div = document.createElement("div");
         div.className = "msg " + className;
         div.innerText = text;
@@ -92,23 +100,33 @@
         chat.scrollTop = chat.scrollHeight;
     }
 
-    setTimeout(() => addMessage(`Good Morning ${fullname} 👋`), 500);
-    setTimeout(() => addMessage("Authenticating faculty credentials..."), 1500);
+    // Greeting & authentication
+    setTimeout(() => addMessage("Good Morning Ma’am 👋"), 500);
+    setTimeout(() => addMessage("Authenticating faculty credentials…"), 1500);
     setTimeout(() => addMessage("Access Granted ✅"), 2500);
-    setTimeout(() => addMessage("{{ quote }}"), 4000);
+
+    // COMMON INVITING SENTENCE (FOR ALL STAFF)
+    setTimeout(() => addMessage(
+        "We are pleased to invite all faculty members of the Computer Science Department to our Association Day celebration."
+    ), 4000);
+
+    // Event details
     setTimeout(() => addMessage(
         "📅 Date : 23 January 2026\n⏰ Time : 9:30 AM\n📍 Venue : Smart Room",
         "details"
-    ), 6000);
+    ), 5500);
+
+    // Closing + button
     setTimeout(() => {
         addMessage("Your presence will make this celebration complete.");
         btn.style.display = "block";
-    }, 8000);
+    }, 7000);
 
     btn.onclick = () => {
-        alert("Thank you for accepting the invitation.\nWe look forward to your presence!");
+        alert("Thank you for accepting the invitation.\nWe look forward to your presence.");
     };
 </script>
 
 </body>
 </html>
+
