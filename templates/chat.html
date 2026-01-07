@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Invitation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <style>
         body {
             margin: 0;
@@ -15,7 +14,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .chat-box {
             width: 95%;
             max-width: 420px;
@@ -26,22 +24,19 @@
             flex-direction: column;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
-
         .header {
             background: #1f4fd8;
             color: white;
             padding: 15px;
             text-align: center;
-            border-radius: 12px 12px 0 0;
             font-weight: bold;
+            border-radius: 12px 12px 0 0;
         }
-
         .messages {
             flex: 1;
             padding: 15px;
             overflow-y: auto;
         }
-
         .msg {
             background: white;
             padding: 10px 14px;
@@ -52,21 +47,17 @@
             font-size: 14px;
             animation: fadeIn 0.5s ease-in;
         }
-
         .system {
             background: #e0e7ff;
         }
-
         .details {
             background: #d1fae5;
             font-weight: bold;
         }
-
         @keyframes fadeIn {
             from {opacity: 0; transform: translateY(5px);}
             to {opacity: 1; transform: translateY(0);}
         }
-
         .btn {
             margin: 15px;
             padding: 12px;
@@ -76,25 +67,22 @@
             border-radius: 8px;
             font-size: 15px;
             display: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
 <div class="chat-box">
-    <div class="header">
-        CS Association System
-    </div>
-
+    <div class="header">CS Association System</div>
     <div class="messages" id="chat"></div>
-
     <button class="btn" id="acceptBtn">Accept Invitation</button>
 </div>
 
 <script>
     const chat = document.getElementById("chat");
     const btn = document.getElementById("acceptBtn");
-    const username = "{{ username }}";
+    const fullname = "{{ fullname }}";
 
     function addMessage(text, className="system") {
         const div = document.createElement("div");
@@ -104,24 +92,18 @@
         chat.scrollTop = chat.scrollHeight;
     }
 
-    setTimeout(() => addMessage(`Good Morning ${username} 👋`), 500);
+    setTimeout(() => addMessage(`Good Morning ${fullname} 👋`), 500);
     setTimeout(() => addMessage("Authenticating faculty credentials..."), 1500);
     setTimeout(() => addMessage("Access Granted ✅"), 2500);
-
-    setTimeout(() => addMessage("Your guidance has shaped our journey."), 3500);
-    setTimeout(() => addMessage("We have something special to share with you."), 4500);
-
-    setTimeout(() => addMessage("You are cordially invited to\nComputer Science Association Day 🎉"), 6000);
-
+    setTimeout(() => addMessage("{{ quote }}"), 4000);
     setTimeout(() => addMessage(
         "📅 Date : 23 January 2026\n⏰ Time : 9:30 AM\n📍 Venue : Smart Room",
         "details"
-    ), 7500);
-
+    ), 6000);
     setTimeout(() => {
         addMessage("Your presence will make this celebration complete.");
         btn.style.display = "block";
-    }, 9000);
+    }, 8000);
 
     btn.onclick = () => {
         alert("Thank you for accepting the invitation.\nWe look forward to your presence!");
